@@ -309,8 +309,92 @@ background-image: url(awesome-foreman-openvox.png)
 * The Vox Pupuli and OpenVox ecosystem!
 
 ---
+.left-column[
+## OpenBolt
+### Tasks?!
+]
+
+.right-column[
+* Runs tasks via ssh or WinRM on remote systems
+
+  * CLI only
+
+* A task is a executable binary/script + json file
+]
+
+[![company-logo](logo-1181x1181.png)](https://www.betadots.de)
+
+???
+
+* Who heard about openbolt before?
+* Who knows what an openbolt task is?
+
+---
+
+count: false
 
 .left-column[
+## OpenBolt
+### Tasks?!
+]
+
+.right-column[
+```json
+{
+  "puppet_task_version": 1,
+  "supports_noop": false,
+  "description": "Switch feat branch to production",
+  "parameters": {
+    "control_repo_branch": {
+      "description": "Control-repo branch",
+      "type": "String[1]"
+    }
+  }
+}
+```
+
+```sh
+#!/bin/bash
+
+set -euo pipefail
+
+pushd /tmp/control-repo || exit
+git branch --move production old_prod
+git branch --move "$PT_control_repo_branch" production
+```
+]
+
+[![company-logo](logo-1181x1181.png)](https://www.betadots.de)
+
+???
+
+---
+
+.left-column[
+## OpenBolt
+### Tasks?!
+]
+
+.right-column[
+* Runs tasks via ssh or WinRM on remote systems
+
+  * CLI only
+
+* A task is a executable binary/script + json file
+
+* Input and output of each task is JSON
+
+  * makes parsing, scripting and concatenating easy
+]
+
+[![company-logo](logo-1181x1181.png)](https://www.betadots.de)
+[![conference-logo-slides](logo-cfgmgmtcamp.png)](https://puppet.run)
+
+???
+
+---
+.left-column[
+### OpenBolt
 ## How it started
 ]
 .right-column[
@@ -348,7 +432,7 @@ background-image: url(awesome-foreman-openvox.png)
 ---
 
 .left-column[
-## How it started
+### How it started
 ## Act 1
 ]
 .right-column[
@@ -368,7 +452,7 @@ background-image: url(awesome-foreman-openvox.png)
 ---
 
 .left-column[
-## How it started
+### How it started
 ## Act 1
 ## Act 2
 ]
@@ -382,7 +466,7 @@ background-image: url(awesome-foreman-openvox.png)
 ---
 
 .left-column[
-## How it started
+### How it started
 ## Act 1
 ## Act 2
 ]
@@ -395,6 +479,165 @@ background-image: url(awesome-foreman-openvox.png)
 
 ---
 
+.left-column[
+### How it started
+## Act 1
+## Act 2
+]
+
+.right-column[
+* [Choria Orchestration System](https://choria.io/docs/concepts/architecture/)
+.img70[![choria.drawio.svg](choria.drawio.svg)]
+
+]
+
+[![company-logo](logo-1181x1181.png)](https://www.betadots.de)
+
+???
+
+* successor of mcollective, or mcollective 2.0. same developers. scales to tens of thousands of systems
+
+---
+
+.left-column[
+### How it started
+## Act 1
+## Act 2
+]
+
+.right-column[
+* [Choria Orchestration System](https://choria.io/docs/concepts/architecture/)
+.img70[![openbolt-choria.drawio.svg](openbolt-choria.drawio.svg)]
+
+]
+
+[![company-logo](logo-1181x1181.png)](https://www.betadots.de)
+
+???
+
+* our plan was to integrate choria into openbolt
+
+---
+
+class: center, middle, inverse
+
+# Act 3
+<br/>
+
+---
+
+.left-column[
+### How it started
+### Act 1
+### Act 2
+## Act 3
+]
+
+.right-column[
+* [github.com/overlookinfra/foreman_openbolt](https://github.com/overlookinfra/foreman_openbolt) - OpenBolt Plugin for Foreman
+]
+
+[![company-logo](logo-1181x1181.png)](https://www.betadots.de)
+
+???
+
+---
+
+count: false
+
+.left-column[
+### How it started
+### Act 1
+### Act 2
+## Act 3
+]
+
+.right-column[
+* [github.com/overlookinfra/foreman_openbolt](https://github.com/overlookinfra/foreman_openbolt) - OpenBolt Plugin for Foreman
+
+* [github.com/overlookinfra/smart_proxy_openbolt](https://github.com/overlookinfra/smart_proxy_openbolt) - OpenBolt Smartproxy Plugin
+]
+
+[![company-logo](logo-1181x1181.png)](https://www.betadots.de)
+
+???
+
+---
+
+count: false
+
+.left-column[
+### How it started
+### Act 1
+### Act 2
+## Act 3
+]
+
+.right-column[
+* [github.com/overlookinfra/foreman_openbolt](https://github.com/overlookinfra/foreman_openbolt) - OpenBolt Plugin for Foreman
+
+* [github.com/overlookinfra/smart_proxy_openbolt](https://github.com/overlookinfra/smart_proxy_openbolt) - OpenBolt Smartproxy Plugin
+
+* [github.com/theforeman/foreman-installer/pull/1049](https://github.com/theforeman/foreman-installer/pull/1049) - foreman-installer Integration
+]
+
+[![company-logo](logo-1181x1181.png)](https://www.betadots.de)
+
+???
+
+---
+
+count: false
+
+.left-column[
+### How it started
+### Act 1
+### Act 2
+## Act 3
+]
+
+.right-column[
+* [github.com/overlookinfra/foreman_openbolt](https://github.com/overlookinfra/foreman_openbolt) - OpenBolt Plugin for Foreman
+
+* [github.com/overlookinfra/smart_proxy_openbolt](https://github.com/overlookinfra/smart_proxy_openbolt) - OpenBolt Smartproxy Plugin
+
+* [github.com/theforeman/foreman-installer/pull/1049](https://github.com/theforeman/foreman-installer/pull/1049) - foreman-installer Integration
+
+* [github.com/OpenVoxProject/openbolt/pull/206](https://github.com/OpenVoxProject/openbolt/pull/206) - Integrate Choria Transport into OpenBolt
+]
+
+[![company-logo](logo-1181x1181.png)](https://www.betadots.de)
+
+???
+
+---
+
+count: false
+
+.left-column[
+### How it started
+### Act 1
+### Act 2
+## Act 3
+]
+
+.right-column[
+* [github.com/overlookinfra/foreman_openbolt](https://github.com/overlookinfra/foreman_openbolt) - OpenBolt Plugin for Foreman
+
+* [github.com/overlookinfra/smart_proxy_openbolt](https://github.com/overlookinfra/smart_proxy_openbolt) - OpenBolt Smartproxy Plugin
+
+* [github.com/theforeman/foreman-installer/pull/1049](https://github.com/theforeman/foreman-installer/pull/1049) - foreman-installer Integration
+
+* [github.com/OpenVoxProject/openbolt/pull/206](https://github.com/OpenVoxProject/openbolt/pull/206) - Integrate Choria Transport into OpenBolt
+
+* All changes are merged & released & packaged for Foreman 3.17.1+
+]
+
+[![company-logo](logo-1181x1181.png)](https://www.betadots.de)
+
+???
+
+---
 <br/>
 ## Part 3 of 4?!
 
