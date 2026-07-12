@@ -845,14 +845,129 @@ count: false
 
 ---
 
-# screenshots
-summary
+.left-column[
+### OpenBolt
+### How it started
+### Act 1
+### Act 2
+### Act 3
+## Conclusion
+]
 
-ausblick
-## Part 3 of 4?!
+.right-column[
+
+* OpenBolt is a great addition to the Foreman ecosystem
+
+  * Makes it easy to reuse existing Tasks (and soon Plans)
+
+]
+[![company-logo](logo-1181x1181.png)](https://www.betadots.de)
 
 ???
 
+---
+
+count: false
+
+.left-column[
+### OpenBolt
+### How it started
+### Act 1
+### Act 2
+### Act 3
+## Conclusion
+]
+
+.right-column[
+
+* OpenBolt is a great addition to the Foreman ecosystem
+
+  * Makes it easy to reuse existing Tasks (and soon Plans)
+
+* Choria provides almost infinite scaling and opposite firewalling
+
+]
+[![company-logo](logo-1181x1181.png)](https://www.betadots.de)
+
+???
+
+---
+
+count: false
+
+.left-column[
+### OpenBolt
+### How it started
+### Act 1
+### Act 2
+### Act 3
+## Conclusion
+]
+
+.right-column[
+
+* OpenBolt is a great addition to the Foreman ecosystem
+
+  * Makes it easy to reuse existing Tasks (and soon Plans)
+
+* Choria provides almost infinite scaling and opposite firewalling
+
+* Please join our [IRC/Slack](https://voxpupuli.org/connect/) to provide feedback
+
+* For feedback: `bastelfreak` on IRC/ Slack or [tim@bastelfreak.de](mailto:tim@bastelfreak.de)
+
+* This talk and previous ones: [github.com/bastelfreak/talks](https://github.com/bastelfreak/talks)
+
+### Thanks for your attention!
+
+]
+[![company-logo](logo-1181x1181.png)](https://www.betadots.de)
+
+???
+
+---
+
+count: false
+
+.left-column[
+### OpenBolt
+### How it started
+### Act 1
+### Act 2
+### Act 3
+### Conclusion
+### Act 4
+]
+
+.right-column[
+```puppet
+# @summary one plan to rule them all!
+# @param version which Foreman version do we want?
+# @param node systemd where we install foreman
+plan foreman::install (
+  String[1] $version = '3.19.1',
+  TargetSpec $node,
+) {
+  $os = run_task('facts', $node).first['os']['family']
+  if $os == 'RedHat' {
+    run_task('yum::update', $node)
+  }
+  out::message("setting up foreman on ${node}")
+  run_task('foreman::add_repo', $node)
+  $package = {'action' => 'install', 'name' => 'foreman-service'}
+  run_task('package', $node, $params)
+  $service = {'action' => 'start', 'name' => 'foreman'}
+  $result = run_task('service', $node, $service}
+  if $result.ok {
+    out::message("worked on ${result.ok_set}")
+  }
+}
+```
+]
+
+[![company-logo](logo-1181x1181.png)](https://www.betadots.de)
+
+???
 
     </textarea>
     <script src="remark-latest.min.js"></script>
