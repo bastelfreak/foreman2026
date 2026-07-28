@@ -2,7 +2,11 @@
 
 https://community.theforeman.org/t/foreman-birthday-voxconf-2026/46064
 
-length: 50min -> reduced to 25min
+length: 50min -> reduced to 35min
+
+* Recordings: https://media.ccc.de/v/voxconf2026-110734-foreman-openbolt-a-3
+* Online Version: https://bastelfreak.de/foreman2026/#1
+* PDF: https://github.com/bastelfreak/foreman2026/blob/main/Foreman%20Birthday%20Party.pdf
 
 ## Foreman + OpenBolt - a <3 story in three acts
 
