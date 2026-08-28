@@ -959,7 +959,7 @@ count: false
 ```puppet
 # @summary one plan to rule them all!
 # @param version which Foreman version do we want?
-# @param node systemd where we install foreman
+# @param node our foreman host
 plan foreman::install (
   String[1] $version = '3.19.1',
   TargetSpec $node,
